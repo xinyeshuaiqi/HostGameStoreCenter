@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="user" namespace="/" extends="common">
+		<action name="UserAction_*" class="pers.wmx.user.web.action.UserAction" method="{1}">
+			
+			<!-- 注册成功，前往登陆 -->
+			<result name="register">/pages/applySuccess.jsp</result>
+			
+			<!-- 登陆成功，直接前往购物中心 -->
+			<result name="userLogin" type="redirectAction">
+				ProductAction_findAllByCondition
+			</result>
+			
+			<result name="adminLogin" type="redirectAction">
+				ProductAction_findAll
+			</result>
+			
+			<result name="fail">/pages/apply.jsp</result>
+			
+			<result name="active">/pages/activeSuccess.jsp</result>
+		</action>
+	</package>
+	
+	
+</struts>

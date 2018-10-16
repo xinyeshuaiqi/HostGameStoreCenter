@@ -1,0 +1,42 @@
+@font-face {
+	font-family:wmx;
+	src: url("Pacifico.ttf") format("TrueType");
+}
+
+*{margin: 0; padding: 0; }
+
+
+
+		
+
+.top {width: 100%; height: 50px; background: black; }
+
+.top .text{float: left; line-height: 50px; font-size: 30px;  color: red;
+	font-family:wmx; 
+}
+
+.top .menu{float: right; line-height: 50px; color: aqua;}
+
+
+
+.bottom{
+ 		font-size: 16px;
+ 		color: grey;
+ 		text-align: center;
+ 		background:black;
+}
+
+a{
+	color: aqua;
+}
+
+a:link {color: aqua; }	
+
+a:visit {color: aqua; }
+
+	 
+
+a:hover{
+    background-color:chocolate;
+}
+

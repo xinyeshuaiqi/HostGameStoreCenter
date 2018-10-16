@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 1 常量 -->
+	<!-- 1.1开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 1.2标签主题，简单风格 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	
+	<!-- 2 公共项 -->
+	<package name="common" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="myResult" class="pers.wmx.web.result.MyResult"></result-type>
+		</result-types>
+	
+		<!-- 配置拦截器 -->
+		<!-- <interceptors>
+			
+			<interceptor name="loginInterceptor" class="pers.wmx.web.interceptor.LoginInterceptor"></interceptor>
+			
+			
+			<interceptor-stack name="MyStack">
+				<interceptor-ref name="loginInterceptor">
+					<param name="excludeMethods">login</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+		</interceptors>
+		
+		
+		<default-interceptor-ref name="MyStack"></default-interceptor-ref>  -->
+		
+		<!-- 配置全局结果集 -->
+		<global-results>
+			<result name="login">/pages/login.jsp</result>	
+		</global-results>
+		
+		
+		<action name="imageCodeAction_*" class="pers.wmx.web.action.imageCodeAction" method="{1}">
+			<!-- 先到当前动作的结果视图中找，找不到，再到全局视图找 -->
+			<result name="code" type="myResult">
+				<!-- 配置图像大小              变成了灵活可配的-->
+				<param name="width">300</param>
+				<param name="height">180</param>
+			</result>
+		</action>
+		
+		<action name="CallBackAction_*" class="pers.wmx.web.action.CallBackAction" method="{1}">
+			<result name="isPayed">
+				/pages/paysuccess.jsp
+			</result>
+			
+			<result name="notPayed">
+				/pages/payfail.jsp
+			</result>
+			
+		</action>
+	</package>
+	
+	
+	<!-- 3 加载其他配置文件 -->
+	<include file="struts/struts-user.xml"></include>
+	<include file="struts/struts-product.xml"></include>
+	<include file="struts/struts-reply.xml"></include>
+	<include file="struts/struts-order.xml"></include>
+	
+</struts>

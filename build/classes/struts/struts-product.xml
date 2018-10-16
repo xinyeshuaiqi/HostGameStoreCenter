@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="pro" namespace="/" extends="common">
+		<action name="ProductAction_*" class="pers.wmx.product.web.action.ProductAction" method="{1}">
+			
+			<!-- 管理员 -->
+			<result name="findAll">/admin/productlist.jsp</result>
+			
+			<result name="add" type="redirectAction">ProductAction_findAll</result>
+			
+			<result name="delete" type="redirectAction">ProductAction_findAll</result>
+			
+			<result name="editUI">/admin/edit.jsp</result>
+			
+			<result name="edit" type="redirectAction">ProductAction_findAll</result>
+			
+			
+			<!-- 用户 -->
+			
+			<result name="findAllByCondition">/pages/productlist.jsp</result>
+			
+			<result name="findById">/pages/productinfo.jsp</result>
+			
+			<result name="addCart">/pages/cart.jsp</result>
+			
+			<result name="changeNum">/pages/cart.jsp</result>
+			
+		</action>
+	</package>
+	
+	
+</struts>

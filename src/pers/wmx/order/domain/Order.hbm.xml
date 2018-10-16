@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pers.wmx.order.domain.Order" table="orders">
+		
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="money"></property>
+		<property name="receiverEmail"></property>		
+		<property name="ordertime">
+			<column name="ordertime" sql-type="datetime"></column>
+		</property>
+		<property name="paystate"></property>
+			
+		<many-to-one name="user" class="pers.wmx.user.domain.User" column="user_id"></many-to-one>
+		
+	
+		<set name="orderItemSet">
+		
+			<key column="order_id"></key>
+			
+			<one-to-many class="pers.wmx.orderitem.domain.OrderItem"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>
